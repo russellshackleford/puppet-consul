@@ -2,6 +2,7 @@
 .*.sw[op]
 .metadata
 .rspec_system
+.ruby-version
 .yardoc
 .yardwarns
 *.iml

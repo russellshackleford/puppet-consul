@@ -15,7 +15,7 @@ group :development do
 end
 
 group :test do
-  gem "rake"
+  gem "rake", '< 13.0.0'
   gem "puppet", ENV['PUPPET_VERSION'] || '~> 5.0'
   gem "puppet-lint"
 
@@ -27,9 +27,10 @@ group :test do
   gem "puppetlabs_spec_helper"
   gem "hiera"
   gem "webmock", ">= 2.3.0"
-  gem "public_suffix"
+  gem "public_suffix", '< 4.0.0'
   gem 'rspec-puppet-facts'
   gem "parallel_tests"
+  gem 'minitest', '< 5.12.1'
 end
 
 group :release do
