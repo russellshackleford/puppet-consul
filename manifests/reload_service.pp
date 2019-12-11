@@ -24,9 +24,12 @@ class consul::reload_service {
       default: { $command = "consul reload -http-addr=${http_addr}:${consul::http_port}" }
     }
 
+    # Fix for updating from 0.7.2 to 1.6.2
+    $fullcmd = "bash -c 'if service consul status; then $command; else service consul restart; fi'"
+
     exec { 'reload consul service':
-      path        => [$consul::bin_dir,'/bin','/usr/bin'],
-      command     => $command,
+      path        => [$consul::bin_dir,'/bin','/usr/bin','/sbin','/usr/sbin'],
+      command     => $fullcmd,
       refreshonly => true,
       tries       => 3,
     }
