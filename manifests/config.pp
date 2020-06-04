@@ -52,10 +52,7 @@ class consul::config (
         }
       }
       'systemd': {
-        systemd::unit_file { 'consul.service':
-          content => template('consul/consul.systemd.erb'),
-          notify  => $notify_service,
-        }
+        # Don't create any service files. The RPM installs them.
       }
       'init','redhat': {
         file { '/etc/init.d/consul':
